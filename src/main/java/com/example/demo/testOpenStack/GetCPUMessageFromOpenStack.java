@@ -56,8 +56,8 @@ public class GetCPUMessageFromOpenStack {
 			Iterator<Hypervisors> iterator = hypervisors.iterator();
 			int local_gb_used=0;
 			int vcpus=0;
-			int memory_mb_used=0;
-			int memory_mb=0;
+			double memory_mb_used=0;
+			double memory_mb=0;
 			long disk_available_least=0;
 //			long free_disk_gb=0;
 			int vcpus_used=0;
@@ -76,8 +76,8 @@ public class GetCPUMessageFromOpenStack {
 			openstackMessage.put("openstack_used_disk", local_gb_used);
 			openstackMessage.put("openstack_vcpus", vcpus);
 			openstackMessage.put("openstack_used_vcpus", vcpus_used);
-			openstackMessage.put("openstack_memory_request", memory_mb_used/1024);
-			openstackMessage.put("openstack_memory_capacity", memory_mb/1024);
+			openstackMessage.put("openstack_memory_request",Math.round((memory_mb_used/1024)*Math.pow(10, 2))/Math.pow(10, 2));
+			openstackMessage.put("openstack_memory_capacity",Math.round((memory_mb/1024)*Math.pow(10, 2))/Math.pow(10, 2));
 			openstackMessage.put("openstack_total_disk", disk_available_least);
 //			openstackMessage.put("free_disk_gb", free_disk_gb);
 			
