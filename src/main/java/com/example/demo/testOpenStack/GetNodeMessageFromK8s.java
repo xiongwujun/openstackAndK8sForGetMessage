@@ -112,9 +112,9 @@ public class GetNodeMessageFromK8s {
 		HashMap<String,Object> map = OpenstackToken.getOpenstackMessage();
 		Double k8s_memory_request_double=new Double(k8s_memory_request.divide(Num_constant).divide(Num_constant).toString());
 		Double k8s_memory_capacity_double=new Double(k8s_memory_capacity.divide(Num_constant).divide(Num_constant).toString());
-		map.put("k8s_cpu_request",k8s_cpu_request);
-		map.put("k8s_cpu_capacity",k8s_cpu_capacity);
-		map.put("k8s_memory_request",Math.round((k8s_memory_request_double/1024)*Math.pow(10, 2))/Math.pow(10, 2));
+		map.put("k8s_cpu_request",((double)k8s_cpu_request)/1000);
+		map.put("k8s_cpu_capacity",k8s_cpu_capacity/1000);
+		map.put("k8s_memory_request",Math.round((k8s_memory_request_double)*Math.pow(10, 2))/Math.pow(10, 2));
 		map.put("k8s_memory_capacity",Math.round((k8s_memory_capacity_double/1024)*Math.pow(10, 2))/Math.pow(10, 2));
 		map.put("k8s_pod_used",k8s_pod_used);
 		map.put("k8s_pod_capacity",k8s_pod_capacity);	

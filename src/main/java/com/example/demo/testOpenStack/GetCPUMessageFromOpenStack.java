@@ -54,20 +54,20 @@ public class GetCPUMessageFromOpenStack {
 			JsonRootBean value = mapper.readValue(message.getBytes(), JsonRootBean.class);
 			List<Hypervisors> hypervisors = value.getHypervisors();
 			Iterator<Hypervisors> iterator = hypervisors.iterator();
-			int local_gb_used=0;
+//			int local_gb_used=0;
 			int vcpus=0;
 			double memory_mb_used=0;
 			double memory_mb=0;
-			long disk_available_least=0;
+//			long disk_available_least=0;
 //			long free_disk_gb=0;
 			int vcpus_used=0;
 			while(iterator.hasNext()) {
 				Hypervisors node = iterator.next();
 				vcpus +=node.getVcpus();
-				local_gb_used+=node.getLocal_gb_used();
+//				local_gb_used+=node.getLocal_gb_used();
 				memory_mb+=node.getMemory_mb();
 				memory_mb_used+=node.getMemory_mb_used();
-				disk_available_least+=node.getDisk_available_least();
+//				disk_available_least+=node.getDisk_available_least();
 //				free_disk_gb+=node.getFree_disk_gb();
 				vcpus_used+=node.getVcpus_used();
 				
@@ -77,7 +77,7 @@ public class GetCPUMessageFromOpenStack {
 			openstackMessage.put("openstack_vcpus", vcpus);
 			openstackMessage.put("openstack_used_vcpus", vcpus_used);
 			openstackMessage.put("openstack_memory_request",Math.round((memory_mb_used/1024)*Math.pow(10, 2))/Math.pow(10, 2));
-			openstackMessage.put("openstack_memory_capacity",Math.round((memory_mb/1024)*Math.pow(10, 2))/Math.pow(10, 2));
+			openstackMessage.put("openstack_memory_capacity",(int)(Math.round((memory_mb/1024)*Math.pow(10, 2))/Math.pow(10, 2)));
 //			openstackMessage.put("openstack_total_disk", disk_available_least);
 //			openstackMessage.put("free_disk_gb", free_disk_gb);
 			

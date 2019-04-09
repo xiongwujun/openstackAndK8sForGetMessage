@@ -45,7 +45,7 @@ public class GetDiskFromCeph {
 				}else {
 					map.put("openstack_total_disk",Math.round((((double)quota_bytes)/1073741824)*Math.pow(10, 2))/Math.pow(10, 2));
 				}
-				map.put("openstack_used_disk", pool.getStats().getBytes_used()/1073741824);
+				map.put("openstack_used_disk", Math.round((((double)pool.getStats().getBytes_used())/1073741824)*Math.pow(10, 2))/Math.pow(10, 2));
 				//					System.out.println("volumes总磁盘大小:------------"+Long.toString(pool.getStats().getMax_avail()/1073741824)+"G	");
 				//					System.out.println("volumes磁盘已经使用的大小:------------"+pool.getStats().getBytes_used()/1048576+"M");
 				//					System.out.println("volumes磁盘使用的百分比:------------"+pool.getStats().getPercent_used()+"%");
