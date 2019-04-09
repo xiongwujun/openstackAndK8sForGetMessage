@@ -73,12 +73,12 @@ public class GetCPUMessageFromOpenStack {
 				
 			}
 			
-			openstackMessage.put("openstack_used_disk", local_gb_used);
+//			openstackMessage.put("openstack_used_disk", local_gb_used);
 			openstackMessage.put("openstack_vcpus", vcpus);
 			openstackMessage.put("openstack_used_vcpus", vcpus_used);
 			openstackMessage.put("openstack_memory_request",Math.round((memory_mb_used/1024)*Math.pow(10, 2))/Math.pow(10, 2));
 			openstackMessage.put("openstack_memory_capacity",Math.round((memory_mb/1024)*Math.pow(10, 2))/Math.pow(10, 2));
-			openstackMessage.put("openstack_total_disk", disk_available_least);
+//			openstackMessage.put("openstack_total_disk", disk_available_least);
 //			openstackMessage.put("free_disk_gb", free_disk_gb);
 			
 //			System.out.println("集群可以使用的vcpu总数"+vcpus);

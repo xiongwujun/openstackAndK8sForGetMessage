@@ -18,8 +18,8 @@ public class WebSocketSendOpenstackMessage {
 	private GetCPUMessageFromOpenStack getCPUMessageFromOpenStack;
 	@Autowired
 	private GetNodeMessageFromK8s getNodeMessageFromK8s;
-//	@Autowired
-//	private GetDiskFromCeph getDiskFromCeph;
+	@Autowired
+	private GetDiskFromCeph getDiskFromCeph;
 	@Autowired
     private SimpMessagingTemplate template;
 	
@@ -31,6 +31,7 @@ public class WebSocketSendOpenstackMessage {
 		getCPUMessageFromOpenStack.getCPUMessageFromOpenStack();
 //		getDiskFromCeph.getDiskFromCeph();
 		getNodeMessageFromK8s.getNodeMessageFromK8s();
+		getDiskFromCeph.getDiskFromCeph();
 		result = OpenstackToken.getOpenstackMessage();
 		String json = objectMapper.writeValueAsString(result);
 		//轮询发送
